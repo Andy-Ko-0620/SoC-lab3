@@ -1,13 +1,13 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Tue Oct 17 11:34:37 2023
+| Date         : Wed Oct 18 11:04:51 2023
 | Host         : DESKTOP-Q9FPE3B running 64-bit major release  (build 9200)
-| Command      : report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1 -file C:/Users/richardhsu/AppData/Roaming/Xilinx/Vivado/timing_report.txt
+| Command      : report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1 -file C:/Users/richardhsu/soc-lab3-syn/timing_report.txt
 | Design       : fir
 | Device       : 7z020-clg400
 | Speed File   : -1  PRODUCTION 1.12 2019-11-22
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Timing Summary Report
 
@@ -463,7 +463,7 @@ wready
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      6.261        0.000                      0                  388        0.147        0.000                      0                  388        9.500        0.000                       0                   279  
+      1.261        0.000                      0                  388        0.147        0.000                      0                  388        7.000        0.000                       0                   279  
 
 
 All user specified timing constraints are met.
@@ -476,7 +476,7 @@ All user specified timing constraints are met.
 
 Clock     Waveform(ns)       Period(ns)      Frequency(MHz)
 -----     ------------       ----------      --------------
-axis_clk  {0.000 10.000}     20.000          50.000          
+axis_clk  {0.000 7.500}      15.000          66.667          
 
 
 ------------------------------------------------------------------------------------------------
@@ -486,7 +486,7 @@ axis_clk  {0.000 10.000}     20.000          50.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-axis_clk            6.261        0.000                      0                  388        0.147        0.000                      0                  388        9.500        0.000                       0                   279  
+axis_clk            1.261        0.000                      0                  388        0.147        0.000                      0                  388        7.000        0.000                       0                   279  
 
 
 ------------------------------------------------------------------------------------------------
@@ -537,26 +537,26 @@ Path Group    From Clock    To Clock
 From Clock:  axis_clk
   To Clock:  axis_clk
 
-Setup :            0  Failing Endpoints,  Worst Slack        6.261ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        1.261ns,  Total Violation        0.000ns
 Hold  :            0  Failing Endpoints,  Worst Slack        0.147ns,  Total Violation        0.000ns
-PW    :            0  Failing Endpoints,  Worst Slack        9.500ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        7.000ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             6.261ns  (required time - arrival time)
+Slack (MET) :             1.261ns  (required time - arrival time)
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[29]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            20.000ns  (axis_clk rise@20.000ns - axis_clk rise@0.000ns)
+  Requirement:            15.000ns  (axis_clk rise@15.000ns - axis_clk rise@0.000ns)
   Data Path Delay:        13.634ns  (logic 9.575ns (70.227%)  route 4.059ns (29.773%))
   Logic Levels:           15  (CARRY4=9 DSP48E1=2 LUT2=1 LUT3=1 LUT4=1 LUT5=1)
   Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.128ns = ( 22.128 - 20.000 ) 
+    Destination Clock Delay (DCD):    2.128ns = ( 17.128 - 15.000 ) 
     Source Clock Delay      (SCD):    2.456ns
     Clock Pessimism Removal (CPR):    0.184ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -641,37 +641,37 @@ Slack (MET) :             6.261ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
 
                          (clock axis_clk rise edge)
-                                                     20.000    20.000 r  
-                                                      0.000    20.000 r  axis_clk (IN)
-                         net (fo=0)                   0.000    20.000    axis_clk
+                                                     15.000    15.000 r  
+                                                      0.000    15.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000    15.000    axis_clk
                                                                       r  axis_clk_IBUF_inst/I
-                         IBUF (Prop_ibuf_I_O)         0.838    20.838 r  axis_clk_IBUF_inst/O
-                         net (fo=1, unplaced)         0.760    21.598    axis_clk_IBUF
+                         IBUF (Prop_ibuf_I_O)         0.838    15.838 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    16.598    axis_clk_IBUF
                                                                       r  axis_clk_IBUF_BUFG_inst/I
-                         BUFG (Prop_bufg_I_O)         0.091    21.689 r  axis_clk_IBUF_BUFG_inst/O
-                         net (fo=278, unplaced)       0.439    22.128    axis_clk_IBUF_BUFG
+                         BUFG (Prop_bufg_I_O)         0.091    16.689 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=278, unplaced)       0.439    17.128    axis_clk_IBUF_BUFG
                          FDCE                                         r  accumulated_result_reg[29]/C
-                         clock pessimism              0.184    22.311    
-                         clock uncertainty           -0.035    22.276    
-                         FDCE (Setup_fdce_C_D)        0.076    22.352    accumulated_result_reg[29]
+                         clock pessimism              0.184    17.311    
+                         clock uncertainty           -0.035    17.276    
+                         FDCE (Setup_fdce_C_D)        0.076    17.352    accumulated_result_reg[29]
   -------------------------------------------------------------------
-                         required time                         22.352    
+                         required time                         17.352    
                          arrival time                         -16.091    
   -------------------------------------------------------------------
-                         slack                                  6.261    
+                         slack                                  1.261    
 
-Slack (MET) :             6.267ns  (required time - arrival time)
+Slack (MET) :             1.267ns  (required time - arrival time)
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[31]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            20.000ns  (axis_clk rise@20.000ns - axis_clk rise@0.000ns)
+  Requirement:            15.000ns  (axis_clk rise@15.000ns - axis_clk rise@0.000ns)
   Data Path Delay:        13.628ns  (logic 9.569ns (70.214%)  route 4.059ns (29.786%))
   Logic Levels:           15  (CARRY4=9 DSP48E1=2 LUT2=1 LUT3=1 LUT4=1 LUT5=1)
   Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.128ns = ( 22.128 - 20.000 ) 
+    Destination Clock Delay (DCD):    2.128ns = ( 17.128 - 15.000 ) 
     Source Clock Delay      (SCD):    2.456ns
     Clock Pessimism Removal (CPR):    0.184ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -756,37 +756,37 @@ Slack (MET) :             6.267ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
 
                          (clock axis_clk rise edge)
-                                                     20.000    20.000 r  
-                                                      0.000    20.000 r  axis_clk (IN)
-                         net (fo=0)                   0.000    20.000    axis_clk
+                                                     15.000    15.000 r  
+                                                      0.000    15.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000    15.000    axis_clk
                                                                       r  axis_clk_IBUF_inst/I
-                         IBUF (Prop_ibuf_I_O)         0.838    20.838 r  axis_clk_IBUF_inst/O
-                         net (fo=1, unplaced)         0.760    21.598    axis_clk_IBUF
+                         IBUF (Prop_ibuf_I_O)         0.838    15.838 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    16.598    axis_clk_IBUF
                                                                       r  axis_clk_IBUF_BUFG_inst/I
-                         BUFG (Prop_bufg_I_O)         0.091    21.689 r  axis_clk_IBUF_BUFG_inst/O
-                         net (fo=278, unplaced)       0.439    22.128    axis_clk_IBUF_BUFG
+                         BUFG (Prop_bufg_I_O)         0.091    16.689 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=278, unplaced)       0.439    17.128    axis_clk_IBUF_BUFG
                          FDCE                                         r  accumulated_result_reg[31]/C
-                         clock pessimism              0.184    22.311    
-                         clock uncertainty           -0.035    22.276    
-                         FDCE (Setup_fdce_C_D)        0.076    22.352    accumulated_result_reg[31]
+                         clock pessimism              0.184    17.311    
+                         clock uncertainty           -0.035    17.276    
+                         FDCE (Setup_fdce_C_D)        0.076    17.352    accumulated_result_reg[31]
   -------------------------------------------------------------------
-                         required time                         22.352    
+                         required time                         17.352    
                          arrival time                         -16.085    
   -------------------------------------------------------------------
-                         slack                                  6.267    
+                         slack                                  1.267    
 
-Slack (MET) :             6.342ns  (required time - arrival time)
+Slack (MET) :             1.342ns  (required time - arrival time)
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[30]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            20.000ns  (axis_clk rise@20.000ns - axis_clk rise@0.000ns)
+  Requirement:            15.000ns  (axis_clk rise@15.000ns - axis_clk rise@0.000ns)
   Data Path Delay:        13.553ns  (logic 9.494ns (70.049%)  route 4.059ns (29.951%))
   Logic Levels:           15  (CARRY4=9 DSP48E1=2 LUT2=1 LUT3=1 LUT4=1 LUT5=1)
   Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.128ns = ( 22.128 - 20.000 ) 
+    Destination Clock Delay (DCD):    2.128ns = ( 17.128 - 15.000 ) 
     Source Clock Delay      (SCD):    2.456ns
     Clock Pessimism Removal (CPR):    0.184ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -871,37 +871,37 @@ Slack (MET) :             6.342ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
 
                          (clock axis_clk rise edge)
-                                                     20.000    20.000 r  
-                                                      0.000    20.000 r  axis_clk (IN)
-                         net (fo=0)                   0.000    20.000    axis_clk
+                                                     15.000    15.000 r  
+                                                      0.000    15.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000    15.000    axis_clk
                                                                       r  axis_clk_IBUF_inst/I
-                         IBUF (Prop_ibuf_I_O)         0.838    20.838 r  axis_clk_IBUF_inst/O
-                         net (fo=1, unplaced)         0.760    21.598    axis_clk_IBUF
+                         IBUF (Prop_ibuf_I_O)         0.838    15.838 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    16.598    axis_clk_IBUF
                                                                       r  axis_clk_IBUF_BUFG_inst/I
-                         BUFG (Prop_bufg_I_O)         0.091    21.689 r  axis_clk_IBUF_BUFG_inst/O
-                         net (fo=278, unplaced)       0.439    22.128    axis_clk_IBUF_BUFG
+                         BUFG (Prop_bufg_I_O)         0.091    16.689 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=278, unplaced)       0.439    17.128    axis_clk_IBUF_BUFG
                          FDCE                                         r  accumulated_result_reg[30]/C
-                         clock pessimism              0.184    22.311    
-                         clock uncertainty           -0.035    22.276    
-                         FDCE (Setup_fdce_C_D)        0.076    22.352    accumulated_result_reg[30]
+                         clock pessimism              0.184    17.311    
+                         clock uncertainty           -0.035    17.276    
+                         FDCE (Setup_fdce_C_D)        0.076    17.352    accumulated_result_reg[30]
   -------------------------------------------------------------------
-                         required time                         22.352    
+                         required time                         17.352    
                          arrival time                         -16.010    
   -------------------------------------------------------------------
-                         slack                                  6.342    
+                         slack                                  1.342    
 
-Slack (MET) :             6.366ns  (required time - arrival time)
+Slack (MET) :             1.366ns  (required time - arrival time)
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[28]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            20.000ns  (axis_clk rise@20.000ns - axis_clk rise@0.000ns)
+  Requirement:            15.000ns  (axis_clk rise@15.000ns - axis_clk rise@0.000ns)
   Data Path Delay:        13.529ns  (logic 9.470ns (69.996%)  route 4.059ns (30.004%))
   Logic Levels:           15  (CARRY4=9 DSP48E1=2 LUT2=1 LUT3=1 LUT4=1 LUT5=1)
   Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.128ns = ( 22.128 - 20.000 ) 
+    Destination Clock Delay (DCD):    2.128ns = ( 17.128 - 15.000 ) 
     Source Clock Delay      (SCD):    2.456ns
     Clock Pessimism Removal (CPR):    0.184ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -986,37 +986,37 @@ Slack (MET) :             6.366ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
 
                          (clock axis_clk rise edge)
-                                                     20.000    20.000 r  
-                                                      0.000    20.000 r  axis_clk (IN)
-                         net (fo=0)                   0.000    20.000    axis_clk
+                                                     15.000    15.000 r  
+                                                      0.000    15.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000    15.000    axis_clk
                                                                       r  axis_clk_IBUF_inst/I
-                         IBUF (Prop_ibuf_I_O)         0.838    20.838 r  axis_clk_IBUF_inst/O
-                         net (fo=1, unplaced)         0.760    21.598    axis_clk_IBUF
+                         IBUF (Prop_ibuf_I_O)         0.838    15.838 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    16.598    axis_clk_IBUF
                                                                       r  axis_clk_IBUF_BUFG_inst/I
-                         BUFG (Prop_bufg_I_O)         0.091    21.689 r  axis_clk_IBUF_BUFG_inst/O
-                         net (fo=278, unplaced)       0.439    22.128    axis_clk_IBUF_BUFG
+                         BUFG (Prop_bufg_I_O)         0.091    16.689 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=278, unplaced)       0.439    17.128    axis_clk_IBUF_BUFG
                          FDCE                                         r  accumulated_result_reg[28]/C
-                         clock pessimism              0.184    22.311    
-                         clock uncertainty           -0.035    22.276    
-                         FDCE (Setup_fdce_C_D)        0.076    22.352    accumulated_result_reg[28]
+                         clock pessimism              0.184    17.311    
+                         clock uncertainty           -0.035    17.276    
+                         FDCE (Setup_fdce_C_D)        0.076    17.352    accumulated_result_reg[28]
   -------------------------------------------------------------------
-                         required time                         22.352    
+                         required time                         17.352    
                          arrival time                         -15.986    
   -------------------------------------------------------------------
-                         slack                                  6.366    
+                         slack                                  1.366    
 
-Slack (MET) :             6.378ns  (required time - arrival time)
+Slack (MET) :             1.378ns  (required time - arrival time)
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[25]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            20.000ns  (axis_clk rise@20.000ns - axis_clk rise@0.000ns)
+  Requirement:            15.000ns  (axis_clk rise@15.000ns - axis_clk rise@0.000ns)
   Data Path Delay:        13.517ns  (logic 9.458ns (69.969%)  route 4.059ns (30.031%))
   Logic Levels:           14  (CARRY4=8 DSP48E1=2 LUT2=1 LUT3=1 LUT4=1 LUT5=1)
   Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.128ns = ( 22.128 - 20.000 ) 
+    Destination Clock Delay (DCD):    2.128ns = ( 17.128 - 15.000 ) 
     Source Clock Delay      (SCD):    2.456ns
     Clock Pessimism Removal (CPR):    0.184ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -1097,37 +1097,37 @@ Slack (MET) :             6.378ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
 
                          (clock axis_clk rise edge)
-                                                     20.000    20.000 r  
-                                                      0.000    20.000 r  axis_clk (IN)
-                         net (fo=0)                   0.000    20.000    axis_clk
+                                                     15.000    15.000 r  
+                                                      0.000    15.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000    15.000    axis_clk
                                                                       r  axis_clk_IBUF_inst/I
-                         IBUF (Prop_ibuf_I_O)         0.838    20.838 r  axis_clk_IBUF_inst/O
-                         net (fo=1, unplaced)         0.760    21.598    axis_clk_IBUF
+                         IBUF (Prop_ibuf_I_O)         0.838    15.838 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    16.598    axis_clk_IBUF
                                                                       r  axis_clk_IBUF_BUFG_inst/I
-                         BUFG (Prop_bufg_I_O)         0.091    21.689 r  axis_clk_IBUF_BUFG_inst/O
-                         net (fo=278, unplaced)       0.439    22.128    axis_clk_IBUF_BUFG
+                         BUFG (Prop_bufg_I_O)         0.091    16.689 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=278, unplaced)       0.439    17.128    axis_clk_IBUF_BUFG
                          FDCE                                         r  accumulated_result_reg[25]/C
-                         clock pessimism              0.184    22.311    
-                         clock uncertainty           -0.035    22.276    
-                         FDCE (Setup_fdce_C_D)        0.076    22.352    accumulated_result_reg[25]
+                         clock pessimism              0.184    17.311    
+                         clock uncertainty           -0.035    17.276    
+                         FDCE (Setup_fdce_C_D)        0.076    17.352    accumulated_result_reg[25]
   -------------------------------------------------------------------
-                         required time                         22.352    
+                         required time                         17.352    
                          arrival time                         -15.974    
   -------------------------------------------------------------------
-                         slack                                  6.378    
+                         slack                                  1.378    
 
-Slack (MET) :             6.384ns  (required time - arrival time)
+Slack (MET) :             1.384ns  (required time - arrival time)
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[27]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            20.000ns  (axis_clk rise@20.000ns - axis_clk rise@0.000ns)
+  Requirement:            15.000ns  (axis_clk rise@15.000ns - axis_clk rise@0.000ns)
   Data Path Delay:        13.511ns  (logic 9.452ns (69.956%)  route 4.059ns (30.044%))
   Logic Levels:           14  (CARRY4=8 DSP48E1=2 LUT2=1 LUT3=1 LUT4=1 LUT5=1)
   Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.128ns = ( 22.128 - 20.000 ) 
+    Destination Clock Delay (DCD):    2.128ns = ( 17.128 - 15.000 ) 
     Source Clock Delay      (SCD):    2.456ns
     Clock Pessimism Removal (CPR):    0.184ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -1208,37 +1208,37 @@ Slack (MET) :             6.384ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
 
                          (clock axis_clk rise edge)
-                                                     20.000    20.000 r  
-                                                      0.000    20.000 r  axis_clk (IN)
-                         net (fo=0)                   0.000    20.000    axis_clk
+                                                     15.000    15.000 r  
+                                                      0.000    15.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000    15.000    axis_clk
                                                                       r  axis_clk_IBUF_inst/I
-                         IBUF (Prop_ibuf_I_O)         0.838    20.838 r  axis_clk_IBUF_inst/O
-                         net (fo=1, unplaced)         0.760    21.598    axis_clk_IBUF
+                         IBUF (Prop_ibuf_I_O)         0.838    15.838 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    16.598    axis_clk_IBUF
                                                                       r  axis_clk_IBUF_BUFG_inst/I
-                         BUFG (Prop_bufg_I_O)         0.091    21.689 r  axis_clk_IBUF_BUFG_inst/O
-                         net (fo=278, unplaced)       0.439    22.128    axis_clk_IBUF_BUFG
+                         BUFG (Prop_bufg_I_O)         0.091    16.689 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=278, unplaced)       0.439    17.128    axis_clk_IBUF_BUFG
                          FDCE                                         r  accumulated_result_reg[27]/C
-                         clock pessimism              0.184    22.311    
-                         clock uncertainty           -0.035    22.276    
-                         FDCE (Setup_fdce_C_D)        0.076    22.352    accumulated_result_reg[27]
+                         clock pessimism              0.184    17.311    
+                         clock uncertainty           -0.035    17.276    
+                         FDCE (Setup_fdce_C_D)        0.076    17.352    accumulated_result_reg[27]
   -------------------------------------------------------------------
-                         required time                         22.352    
+                         required time                         17.352    
                          arrival time                         -15.968    
   -------------------------------------------------------------------
-                         slack                                  6.384    
+                         slack                                  1.384    
 
-Slack (MET) :             6.459ns  (required time - arrival time)
+Slack (MET) :             1.459ns  (required time - arrival time)
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[26]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            20.000ns  (axis_clk rise@20.000ns - axis_clk rise@0.000ns)
+  Requirement:            15.000ns  (axis_clk rise@15.000ns - axis_clk rise@0.000ns)
   Data Path Delay:        13.436ns  (logic 9.377ns (69.788%)  route 4.059ns (30.212%))
   Logic Levels:           14  (CARRY4=8 DSP48E1=2 LUT2=1 LUT3=1 LUT4=1 LUT5=1)
   Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.128ns = ( 22.128 - 20.000 ) 
+    Destination Clock Delay (DCD):    2.128ns = ( 17.128 - 15.000 ) 
     Source Clock Delay      (SCD):    2.456ns
     Clock Pessimism Removal (CPR):    0.184ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -1319,37 +1319,37 @@ Slack (MET) :             6.459ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
 
                          (clock axis_clk rise edge)
-                                                     20.000    20.000 r  
-                                                      0.000    20.000 r  axis_clk (IN)
-                         net (fo=0)                   0.000    20.000    axis_clk
+                                                     15.000    15.000 r  
+                                                      0.000    15.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000    15.000    axis_clk
                                                                       r  axis_clk_IBUF_inst/I
-                         IBUF (Prop_ibuf_I_O)         0.838    20.838 r  axis_clk_IBUF_inst/O
-                         net (fo=1, unplaced)         0.760    21.598    axis_clk_IBUF
+                         IBUF (Prop_ibuf_I_O)         0.838    15.838 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    16.598    axis_clk_IBUF
                                                                       r  axis_clk_IBUF_BUFG_inst/I
-                         BUFG (Prop_bufg_I_O)         0.091    21.689 r  axis_clk_IBUF_BUFG_inst/O
-                         net (fo=278, unplaced)       0.439    22.128    axis_clk_IBUF_BUFG
+                         BUFG (Prop_bufg_I_O)         0.091    16.689 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=278, unplaced)       0.439    17.128    axis_clk_IBUF_BUFG
                          FDCE                                         r  accumulated_result_reg[26]/C
-                         clock pessimism              0.184    22.311    
-                         clock uncertainty           -0.035    22.276    
-                         FDCE (Setup_fdce_C_D)        0.076    22.352    accumulated_result_reg[26]
+                         clock pessimism              0.184    17.311    
+                         clock uncertainty           -0.035    17.276    
+                         FDCE (Setup_fdce_C_D)        0.076    17.352    accumulated_result_reg[26]
   -------------------------------------------------------------------
-                         required time                         22.352    
+                         required time                         17.352    
                          arrival time                         -15.893    
   -------------------------------------------------------------------
-                         slack                                  6.459    
+                         slack                                  1.459    
 
-Slack (MET) :             6.483ns  (required time - arrival time)
+Slack (MET) :             1.483ns  (required time - arrival time)
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[24]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            20.000ns  (axis_clk rise@20.000ns - axis_clk rise@0.000ns)
+  Requirement:            15.000ns  (axis_clk rise@15.000ns - axis_clk rise@0.000ns)
   Data Path Delay:        13.412ns  (logic 9.353ns (69.734%)  route 4.059ns (30.266%))
   Logic Levels:           14  (CARRY4=8 DSP48E1=2 LUT2=1 LUT3=1 LUT4=1 LUT5=1)
   Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.128ns = ( 22.128 - 20.000 ) 
+    Destination Clock Delay (DCD):    2.128ns = ( 17.128 - 15.000 ) 
     Source Clock Delay      (SCD):    2.456ns
     Clock Pessimism Removal (CPR):    0.184ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -1430,37 +1430,37 @@ Slack (MET) :             6.483ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
 
                          (clock axis_clk rise edge)
-                                                     20.000    20.000 r  
-                                                      0.000    20.000 r  axis_clk (IN)
-                         net (fo=0)                   0.000    20.000    axis_clk
+                                                     15.000    15.000 r  
+                                                      0.000    15.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000    15.000    axis_clk
                                                                       r  axis_clk_IBUF_inst/I
-                         IBUF (Prop_ibuf_I_O)         0.838    20.838 r  axis_clk_IBUF_inst/O
-                         net (fo=1, unplaced)         0.760    21.598    axis_clk_IBUF
+                         IBUF (Prop_ibuf_I_O)         0.838    15.838 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    16.598    axis_clk_IBUF
                                                                       r  axis_clk_IBUF_BUFG_inst/I
-                         BUFG (Prop_bufg_I_O)         0.091    21.689 r  axis_clk_IBUF_BUFG_inst/O
-                         net (fo=278, unplaced)       0.439    22.128    axis_clk_IBUF_BUFG
+                         BUFG (Prop_bufg_I_O)         0.091    16.689 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=278, unplaced)       0.439    17.128    axis_clk_IBUF_BUFG
                          FDCE                                         r  accumulated_result_reg[24]/C
-                         clock pessimism              0.184    22.311    
-                         clock uncertainty           -0.035    22.276    
-                         FDCE (Setup_fdce_C_D)        0.076    22.352    accumulated_result_reg[24]
+                         clock pessimism              0.184    17.311    
+                         clock uncertainty           -0.035    17.276    
+                         FDCE (Setup_fdce_C_D)        0.076    17.352    accumulated_result_reg[24]
   -------------------------------------------------------------------
-                         required time                         22.352    
+                         required time                         17.352    
                          arrival time                         -15.869    
   -------------------------------------------------------------------
-                         slack                                  6.483    
+                         slack                                  1.483    
 
-Slack (MET) :             6.608ns  (required time - arrival time)
+Slack (MET) :             1.608ns  (required time - arrival time)
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[21]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            20.000ns  (axis_clk rise@20.000ns - axis_clk rise@0.000ns)
+  Requirement:            15.000ns  (axis_clk rise@15.000ns - axis_clk rise@0.000ns)
   Data Path Delay:        13.287ns  (logic 9.237ns (69.517%)  route 4.050ns (30.483%))
   Logic Levels:           13  (CARRY4=7 DSP48E1=2 LUT2=1 LUT3=1 LUT4=1 LUT5=1)
   Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.128ns = ( 22.128 - 20.000 ) 
+    Destination Clock Delay (DCD):    2.128ns = ( 17.128 - 15.000 ) 
     Source Clock Delay      (SCD):    2.456ns
     Clock Pessimism Removal (CPR):    0.184ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -1537,37 +1537,37 @@ Slack (MET) :             6.608ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
 
                          (clock axis_clk rise edge)
-                                                     20.000    20.000 r  
-                                                      0.000    20.000 r  axis_clk (IN)
-                         net (fo=0)                   0.000    20.000    axis_clk
+                                                     15.000    15.000 r  
+                                                      0.000    15.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000    15.000    axis_clk
                                                                       r  axis_clk_IBUF_inst/I
-                         IBUF (Prop_ibuf_I_O)         0.838    20.838 r  axis_clk_IBUF_inst/O
-                         net (fo=1, unplaced)         0.760    21.598    axis_clk_IBUF
+                         IBUF (Prop_ibuf_I_O)         0.838    15.838 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    16.598    axis_clk_IBUF
                                                                       r  axis_clk_IBUF_BUFG_inst/I
-                         BUFG (Prop_bufg_I_O)         0.091    21.689 r  axis_clk_IBUF_BUFG_inst/O
-                         net (fo=278, unplaced)       0.439    22.128    axis_clk_IBUF_BUFG
+                         BUFG (Prop_bufg_I_O)         0.091    16.689 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=278, unplaced)       0.439    17.128    axis_clk_IBUF_BUFG
                          FDCE                                         r  accumulated_result_reg[21]/C
-                         clock pessimism              0.184    22.311    
-                         clock uncertainty           -0.035    22.276    
-                         FDCE (Setup_fdce_C_D)        0.076    22.352    accumulated_result_reg[21]
+                         clock pessimism              0.184    17.311    
+                         clock uncertainty           -0.035    17.276    
+                         FDCE (Setup_fdce_C_D)        0.076    17.352    accumulated_result_reg[21]
   -------------------------------------------------------------------
-                         required time                         22.352    
+                         required time                         17.352    
                          arrival time                         -15.744    
   -------------------------------------------------------------------
-                         slack                                  6.608    
+                         slack                                  1.608    
 
-Slack (MET) :             6.614ns  (required time - arrival time)
+Slack (MET) :             1.614ns  (required time - arrival time)
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[23]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            20.000ns  (axis_clk rise@20.000ns - axis_clk rise@0.000ns)
+  Requirement:            15.000ns  (axis_clk rise@15.000ns - axis_clk rise@0.000ns)
   Data Path Delay:        13.281ns  (logic 9.231ns (69.503%)  route 4.050ns (30.497%))
   Logic Levels:           13  (CARRY4=7 DSP48E1=2 LUT2=1 LUT3=1 LUT4=1 LUT5=1)
   Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.128ns = ( 22.128 - 20.000 ) 
+    Destination Clock Delay (DCD):    2.128ns = ( 17.128 - 15.000 ) 
     Source Clock Delay      (SCD):    2.456ns
     Clock Pessimism Removal (CPR):    0.184ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -1644,24 +1644,24 @@ Slack (MET) :             6.614ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
 
                          (clock axis_clk rise edge)
-                                                     20.000    20.000 r  
-                                                      0.000    20.000 r  axis_clk (IN)
-                         net (fo=0)                   0.000    20.000    axis_clk
+                                                     15.000    15.000 r  
+                                                      0.000    15.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000    15.000    axis_clk
                                                                       r  axis_clk_IBUF_inst/I
-                         IBUF (Prop_ibuf_I_O)         0.838    20.838 r  axis_clk_IBUF_inst/O
-                         net (fo=1, unplaced)         0.760    21.598    axis_clk_IBUF
+                         IBUF (Prop_ibuf_I_O)         0.838    15.838 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    16.598    axis_clk_IBUF
                                                                       r  axis_clk_IBUF_BUFG_inst/I
-                         BUFG (Prop_bufg_I_O)         0.091    21.689 r  axis_clk_IBUF_BUFG_inst/O
-                         net (fo=278, unplaced)       0.439    22.128    axis_clk_IBUF_BUFG
+                         BUFG (Prop_bufg_I_O)         0.091    16.689 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=278, unplaced)       0.439    17.128    axis_clk_IBUF_BUFG
                          FDCE                                         r  accumulated_result_reg[23]/C
-                         clock pessimism              0.184    22.311    
-                         clock uncertainty           -0.035    22.276    
-                         FDCE (Setup_fdce_C_D)        0.076    22.352    accumulated_result_reg[23]
+                         clock pessimism              0.184    17.311    
+                         clock uncertainty           -0.035    17.276    
+                         FDCE (Setup_fdce_C_D)        0.076    17.352    accumulated_result_reg[23]
   -------------------------------------------------------------------
-                         required time                         22.352    
+                         required time                         17.352    
                          arrival time                         -15.738    
   -------------------------------------------------------------------
-                         slack                                  6.614    
+                         slack                                  1.614    
 
 
 
@@ -1671,9 +1671,9 @@ Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack (MET) :             0.147ns  (arrival time - required time)
   Source:                 data_counter_reg[3]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_counter_reg[3]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (axis_clk rise@0.000ns - axis_clk rise@0.000ns)
@@ -1727,9 +1727,9 @@ Slack (MET) :             0.147ns  (arrival time - required time)
 
 Slack (MET) :             0.147ns  (arrival time - required time)
   Source:                 read_valid_r_reg/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            read_addr_received_r_reg/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (axis_clk rise@0.000ns - axis_clk rise@0.000ns)
@@ -1783,9 +1783,9 @@ Slack (MET) :             0.147ns  (arrival time - required time)
 
 Slack (MET) :             0.147ns  (arrival time - required time)
   Source:                 shift_counter_reg[5]/C
-                            (rising edge-triggered cell FDPE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDPE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            shift_counter_reg[2]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (axis_clk rise@0.000ns - axis_clk rise@0.000ns)
@@ -1839,9 +1839,9 @@ Slack (MET) :             0.147ns  (arrival time - required time)
 
 Slack (MET) :             0.150ns  (arrival time - required time)
   Source:                 read_valid_r_reg/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            read_valid_r_reg/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (axis_clk rise@0.000ns - axis_clk rise@0.000ns)
@@ -1895,9 +1895,9 @@ Slack (MET) :             0.150ns  (arrival time - required time)
 
 Slack (MET) :             0.150ns  (arrival time - required time)
   Source:                 shift_counter_reg[5]/C
-                            (rising edge-triggered cell FDPE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDPE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            shift_counter_reg[4]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (axis_clk rise@0.000ns - axis_clk rise@0.000ns)
@@ -1951,9 +1951,9 @@ Slack (MET) :             0.150ns  (arrival time - required time)
 
 Slack (MET) :             0.151ns  (arrival time - required time)
   Source:                 data_counter_reg[2]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_counter_reg[2]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (axis_clk rise@0.000ns - axis_clk rise@0.000ns)
@@ -2007,9 +2007,9 @@ Slack (MET) :             0.151ns  (arrival time - required time)
 
 Slack (MET) :             0.151ns  (arrival time - required time)
   Source:                 shift_counter_reg[2]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            shift_counter_reg[3]/D
-                            (rising edge-triggered cell FDPE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDPE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (axis_clk rise@0.000ns - axis_clk rise@0.000ns)
@@ -2063,9 +2063,9 @@ Slack (MET) :             0.151ns  (arrival time - required time)
 
 Slack (MET) :             0.152ns  (arrival time - required time)
   Source:                 accumulated_result_reg[10]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[10]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (axis_clk rise@0.000ns - axis_clk rise@0.000ns)
@@ -2123,9 +2123,9 @@ Slack (MET) :             0.152ns  (arrival time - required time)
 
 Slack (MET) :             0.152ns  (arrival time - required time)
   Source:                 accumulated_result_reg[14]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[14]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (axis_clk rise@0.000ns - axis_clk rise@0.000ns)
@@ -2183,9 +2183,9 @@ Slack (MET) :             0.152ns  (arrival time - required time)
 
 Slack (MET) :             0.152ns  (arrival time - required time)
   Source:                 accumulated_result_reg[2]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            accumulated_result_reg[2]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             axis_clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (axis_clk rise@0.000ns - axis_clk rise@0.000ns)
@@ -2248,41 +2248,41 @@ Slack (MET) :             0.152ns  (arrival time - required time)
 Pulse Width Checks
 --------------------------------------------------------------------------------------
 Clock Name:         axis_clk
-Waveform(ns):       { 0.000 10.000 }
-Period(ns):         20.000
+Waveform(ns):       { 0.000 7.500 }
+Period(ns):         15.000
 Sources:            { axis_clk }
 
 Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location  Pin
-Min Period        n/a     BUFG/I   n/a            2.155         20.000      17.845               axis_clk_IBUF_BUFG_inst/I
-Min Period        n/a     FDCE/C   n/a            1.000         20.000      19.000               accumulated_result_reg[0]/C
-Min Period        n/a     FDCE/C   n/a            1.000         20.000      19.000               accumulated_result_reg[10]/C
-Min Period        n/a     FDCE/C   n/a            1.000         20.000      19.000               accumulated_result_reg[11]/C
-Min Period        n/a     FDCE/C   n/a            1.000         20.000      19.000               accumulated_result_reg[12]/C
-Min Period        n/a     FDCE/C   n/a            1.000         20.000      19.000               accumulated_result_reg[13]/C
-Min Period        n/a     FDCE/C   n/a            1.000         20.000      19.000               accumulated_result_reg[14]/C
-Min Period        n/a     FDCE/C   n/a            1.000         20.000      19.000               accumulated_result_reg[15]/C
-Min Period        n/a     FDCE/C   n/a            1.000         20.000      19.000               accumulated_result_reg[16]/C
-Min Period        n/a     FDCE/C   n/a            1.000         20.000      19.000               accumulated_result_reg[17]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[0]/C
-Low Pulse Width   Fast    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[0]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[10]/C
-Low Pulse Width   Fast    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[10]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[11]/C
-Low Pulse Width   Fast    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[11]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[12]/C
-Low Pulse Width   Fast    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[12]/C
-Low Pulse Width   Slow    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[13]/C
-Low Pulse Width   Fast    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[13]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[0]/C
-High Pulse Width  Fast    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[0]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[10]/C
-High Pulse Width  Fast    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[10]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[11]/C
-High Pulse Width  Fast    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[11]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[12]/C
-High Pulse Width  Fast    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[12]/C
-High Pulse Width  Slow    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[13]/C
-High Pulse Width  Fast    FDCE/C   n/a            0.500         10.000      9.500                accumulated_result_reg[13]/C
+Min Period        n/a     BUFG/I   n/a            2.155         15.000      12.845               axis_clk_IBUF_BUFG_inst/I
+Min Period        n/a     FDCE/C   n/a            1.000         15.000      14.000               accumulated_result_reg[0]/C
+Min Period        n/a     FDCE/C   n/a            1.000         15.000      14.000               accumulated_result_reg[10]/C
+Min Period        n/a     FDCE/C   n/a            1.000         15.000      14.000               accumulated_result_reg[11]/C
+Min Period        n/a     FDCE/C   n/a            1.000         15.000      14.000               accumulated_result_reg[12]/C
+Min Period        n/a     FDCE/C   n/a            1.000         15.000      14.000               accumulated_result_reg[13]/C
+Min Period        n/a     FDCE/C   n/a            1.000         15.000      14.000               accumulated_result_reg[14]/C
+Min Period        n/a     FDCE/C   n/a            1.000         15.000      14.000               accumulated_result_reg[15]/C
+Min Period        n/a     FDCE/C   n/a            1.000         15.000      14.000               accumulated_result_reg[16]/C
+Min Period        n/a     FDCE/C   n/a            1.000         15.000      14.000               accumulated_result_reg[17]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[0]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[0]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[10]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[10]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[11]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[11]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[12]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[12]/C
+Low Pulse Width   Slow    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[13]/C
+Low Pulse Width   Fast    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[13]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[0]/C
+High Pulse Width  Fast    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[0]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[10]/C
+High Pulse Width  Fast    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[10]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[11]/C
+High Pulse Width  Fast    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[11]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[12]/C
+High Pulse Width  Fast    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[12]/C
+High Pulse Width  Slow    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[13]/C
+High Pulse Width  Fast    FDCE/C   n/a            0.500         7.500       7.000                accumulated_result_reg[13]/C
 
 
 
@@ -2300,7 +2300,7 @@ Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_Di[0]
                             (output port)
   Path Group:             (none)
@@ -2359,7 +2359,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_Di[10]
                             (output port)
   Path Group:             (none)
@@ -2418,7 +2418,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_Di[11]
                             (output port)
   Path Group:             (none)
@@ -2477,7 +2477,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_Di[12]
                             (output port)
   Path Group:             (none)
@@ -2536,7 +2536,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_Di[13]
                             (output port)
   Path Group:             (none)
@@ -2595,7 +2595,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_Di[14]
                             (output port)
   Path Group:             (none)
@@ -2654,7 +2654,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_Di[15]
                             (output port)
   Path Group:             (none)
@@ -2713,7 +2713,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_Di[16]
                             (output port)
   Path Group:             (none)
@@ -2772,7 +2772,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_Di[17]
                             (output port)
   Path Group:             (none)
@@ -2831,7 +2831,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 data_length_reg[1]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            data_Di[18]
                             (output port)
   Path Group:             (none)
@@ -2896,7 +2896,7 @@ Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
   Source:                 read_valid_r_reg/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            rvalid
                             (output port)
   Path Group:             (none)
@@ -2933,7 +2933,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 accumulated_result_reg[0]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            sm_tdata[0]
                             (output port)
   Path Group:             (none)
@@ -2970,7 +2970,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 accumulated_result_reg[10]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            sm_tdata[10]
                             (output port)
   Path Group:             (none)
@@ -3007,7 +3007,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 accumulated_result_reg[11]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            sm_tdata[11]
                             (output port)
   Path Group:             (none)
@@ -3044,7 +3044,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 accumulated_result_reg[12]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            sm_tdata[12]
                             (output port)
   Path Group:             (none)
@@ -3081,7 +3081,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 accumulated_result_reg[13]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            sm_tdata[13]
                             (output port)
   Path Group:             (none)
@@ -3118,7 +3118,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 accumulated_result_reg[14]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            sm_tdata[14]
                             (output port)
   Path Group:             (none)
@@ -3155,7 +3155,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 accumulated_result_reg[15]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            sm_tdata[15]
                             (output port)
   Path Group:             (none)
@@ -3192,7 +3192,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 accumulated_result_reg[16]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            sm_tdata[16]
                             (output port)
   Path Group:             (none)
@@ -3229,7 +3229,7 @@ Slack:                    inf
 
 Slack:                    inf
   Source:                 accumulated_result_reg[17]/C
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Destination:            sm_tdata[17]
                             (output port)
   Path Group:             (none)
@@ -3284,7 +3284,7 @@ Slack:                    inf
   Source:                 tap_Do[16]
                             (input port)
   Destination:            accumulated_result_reg[29]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
   Data Path Delay:        10.806ns  (logic 8.514ns (78.786%)  route 2.292ns (21.214%))
@@ -3359,7 +3359,7 @@ Slack:                    inf
   Source:                 tap_Do[16]
                             (input port)
   Destination:            accumulated_result_reg[31]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
   Data Path Delay:        10.800ns  (logic 8.508ns (78.774%)  route 2.292ns (21.226%))
@@ -3434,7 +3434,7 @@ Slack:                    inf
   Source:                 tap_Do[16]
                             (input port)
   Destination:            accumulated_result_reg[30]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
   Data Path Delay:        10.725ns  (logic 8.433ns (78.626%)  route 2.292ns (21.374%))
@@ -3509,7 +3509,7 @@ Slack:                    inf
   Source:                 tap_Do[16]
                             (input port)
   Destination:            accumulated_result_reg[28]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
   Data Path Delay:        10.701ns  (logic 8.409ns (78.578%)  route 2.292ns (21.422%))
@@ -3584,7 +3584,7 @@ Slack:                    inf
   Source:                 tap_Do[16]
                             (input port)
   Destination:            accumulated_result_reg[25]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
   Data Path Delay:        10.689ns  (logic 8.397ns (78.554%)  route 2.292ns (21.446%))
@@ -3655,7 +3655,7 @@ Slack:                    inf
   Source:                 tap_Do[16]
                             (input port)
   Destination:            accumulated_result_reg[27]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
   Data Path Delay:        10.683ns  (logic 8.391ns (78.542%)  route 2.292ns (21.458%))
@@ -3726,7 +3726,7 @@ Slack:                    inf
   Source:                 tap_Do[16]
                             (input port)
   Destination:            accumulated_result_reg[26]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
   Data Path Delay:        10.608ns  (logic 8.316ns (78.390%)  route 2.292ns (21.610%))
@@ -3797,7 +3797,7 @@ Slack:                    inf
   Source:                 tap_Do[16]
                             (input port)
   Destination:            accumulated_result_reg[24]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
   Data Path Delay:        10.584ns  (logic 8.292ns (78.341%)  route 2.292ns (21.659%))
@@ -3868,7 +3868,7 @@ Slack:                    inf
   Source:                 tap_Do[16]
                             (input port)
   Destination:            accumulated_result_reg[21]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
   Data Path Delay:        10.459ns  (logic 8.176ns (78.168%)  route 2.283ns (21.832%))
@@ -3935,7 +3935,7 @@ Slack:                    inf
   Source:                 tap_Do[16]
                             (input port)
   Destination:            accumulated_result_reg[23]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
   Data Path Delay:        10.453ns  (logic 8.170ns (78.155%)  route 2.283ns (21.845%))
@@ -4008,7 +4008,7 @@ Slack:                    inf
   Source:                 data_Do[0]
                             (input port)
   Destination:            current_data_reg[0]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
   Data Path Delay:        0.538ns  (logic 0.200ns (37.290%)  route 0.337ns (62.710%))
@@ -4044,7 +4044,7 @@ Slack:                    inf
   Source:                 data_Do[10]
                             (input port)
   Destination:            current_data_reg[10]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
   Data Path Delay:        0.538ns  (logic 0.200ns (37.290%)  route 0.337ns (62.710%))
@@ -4080,7 +4080,7 @@ Slack:                    inf
   Source:                 data_Do[11]
                             (input port)
   Destination:            current_data_reg[11]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
   Data Path Delay:        0.538ns  (logic 0.200ns (37.290%)  route 0.337ns (62.710%))
@@ -4116,7 +4116,7 @@ Slack:                    inf
   Source:                 data_Do[12]
                             (input port)
   Destination:            current_data_reg[12]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
   Data Path Delay:        0.538ns  (logic 0.200ns (37.290%)  route 0.337ns (62.710%))
@@ -4152,7 +4152,7 @@ Slack:                    inf
   Source:                 data_Do[13]
                             (input port)
   Destination:            current_data_reg[13]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
   Data Path Delay:        0.538ns  (logic 0.200ns (37.290%)  route 0.337ns (62.710%))
@@ -4188,7 +4188,7 @@ Slack:                    inf
   Source:                 data_Do[14]
                             (input port)
   Destination:            current_data_reg[14]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
   Data Path Delay:        0.538ns  (logic 0.200ns (37.290%)  route 0.337ns (62.710%))
@@ -4224,7 +4224,7 @@ Slack:                    inf
   Source:                 data_Do[15]
                             (input port)
   Destination:            current_data_reg[15]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
   Data Path Delay:        0.538ns  (logic 0.200ns (37.290%)  route 0.337ns (62.710%))
@@ -4260,7 +4260,7 @@ Slack:                    inf
   Source:                 data_Do[16]
                             (input port)
   Destination:            current_data_reg[16]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
   Data Path Delay:        0.538ns  (logic 0.200ns (37.290%)  route 0.337ns (62.710%))
@@ -4296,7 +4296,7 @@ Slack:                    inf
   Source:                 data_Do[17]
                             (input port)
   Destination:            current_data_reg[17]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
   Data Path Delay:        0.538ns  (logic 0.200ns (37.290%)  route 0.337ns (62.710%))
@@ -4332,7 +4332,7 @@ Slack:                    inf
   Source:                 data_Do[18]
                             (input port)
   Destination:            current_data_reg[18]/D
-                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@7.500ns period=15.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
   Data Path Delay:        0.538ns  (logic 0.200ns (37.290%)  route 0.337ns (62.710%))
