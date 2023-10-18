@@ -353,8 +353,6 @@ module fir_tb
         sm_tready <= 0;
         if(k == data_length)begin
             $display("------end result transmission------");
-            repeat(3) @(posedge axis_clk);
-            $finish; 
         end
     end
     endtask
